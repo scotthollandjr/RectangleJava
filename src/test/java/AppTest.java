@@ -23,4 +23,13 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Square finder");
   }
 
+  @Test
+  public void displayCubeInfo() {
+    goTo("http://localhost:4567/");
+    fill("#length").with("5");
+    fill("#width").with("5");
+    submit(".btn");
+    assertThat(pageSource()).contains("Surface area of a cube with those dimensions: 150");
+    assertThat(pageSource()).contains("Volume of a cube with those dimensions: 125");
+  }
 }
